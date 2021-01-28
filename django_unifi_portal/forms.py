@@ -8,10 +8,8 @@ from material import Layout, Row, Fieldset
 from . import form_mixin as forms
 
 class UnifiLoginForm(AuthenticationForm):
-    #ATTENZIONE: maschero la username con la email
     username = forms.EmailField(label="Email Address", required=True)
     password = forms.CharField(widget=forms.PasswordInput)
-
     template = Template("""
     {% form %}
         {% part form.username prefix %}<i class="material-icons prefix">email</i>{% endpart %}
@@ -22,7 +20,3 @@ class UnifiLoginForm(AuthenticationForm):
 
     title = "Unifi Login"
 
-
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'username', 'password']
